@@ -1,7 +1,7 @@
-asar:
-	cd vendor/asar && ${MAKE}
-	[ -f vendor/asar/asar ] && cp /vendor/asar/asar /asar/
-	[ -f vendor/asar/asar.exe ] && cp /vendor/asar/asar.exe /asar
-
+asar/asar:
+	cd vendor/asar && cmake src && make asar-standalone
+	cp vendor/asar/asar/bin/* asar/
 clean:
-	cd vendor/asar && ${MAKE} clean
+	cd vendor/asar && cmake src && make clean
+	rm -f asar/asar
+	rm -f asar/asar.exe
